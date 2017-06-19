@@ -1,0 +1,36 @@
+<h1>Top#index</h1>
+<p>Find me in app/views/top/index.html.erb</p>
+
+<%= form_for(@comment ,url: top_create_path) do |f| %>
+  <div class="field">
+    <%= f.label :content %>
+    <%= f.text_area :content %>
+  </div>
+  <div class="fiels">
+  <%= f.hidden_field :user_id, value: @comment.user_id %>
+  </div>
+ <div class="actions">
+  <%= f.submit %>
+  </div>
+  <% end %>
+  
+  <div>
+<table>
+  <thead>
+    <tr>
+      <th>user_id</th>
+      <th>message</th>     
+    </tr>
+  </thead>
+    
+    <tbody>
+  <% @comments.each do |comment| %>
+
+     <tr>
+          <td><%= comment.user.email %></td>
+          <td><%= comment.content %></td>
+     </tr>
+ <% end %>
+    </tbody>
+ </table>
+  </div>
